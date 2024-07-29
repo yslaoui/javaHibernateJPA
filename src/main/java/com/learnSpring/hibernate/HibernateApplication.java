@@ -5,7 +5,10 @@ import com.learnSpring.hibernate.entity.Student;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.Lifecycle;
 import org.springframework.context.annotation.Bean;
+
+import java.util.List;
 
 @SpringBootApplication
 public class HibernateApplication {
@@ -20,10 +23,16 @@ public class HibernateApplication {
 	CommandLineRunner commandLineRunner(StudentDao studentDao) {
 		return runner -> {
 //			createMultipleStudents(studentDao);
-			System.out.println("Looking for student with id 3");
-			Student foundStudent = findAStudent(studentDao, 3);
-			System.out.println(foundStudent);
+			System.out.println("printing all students");
+			getAllStudents(studentDao);
 		};
+	}
+
+	public void getAllStudents(StudentDao dao) {
+		List<Student> students = dao.findAll();
+		for (Student student: students) {
+			System.out.println(student);
+		}
 	}
 
 	public Student findAStudent(StudentDao dao, int id) {
@@ -45,6 +54,7 @@ public class HibernateApplication {
 		dao.save(student3);
 		System.out.println("The three students were added");
 	}
+
 
 
 
