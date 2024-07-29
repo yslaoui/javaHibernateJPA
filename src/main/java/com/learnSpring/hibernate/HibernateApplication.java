@@ -7,16 +7,13 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.Lifecycle;
 import org.springframework.context.annotation.Bean;
-
 import java.util.List;
 
 @SpringBootApplication
 public class HibernateApplication {
 
 	public static void main(String[] args) {
-
 		SpringApplication.run(HibernateApplication.class, args);
-
 	}
 
 	@Bean
@@ -24,8 +21,17 @@ public class HibernateApplication {
 		return runner -> {
 //			createMultipleStudents(studentDao);
 			System.out.println("printing all students");
-			getAllStudents(studentDao);
+//			getAllStudents(studentDao);
+			getStudentByLastName(studentDao, "Macron");
 		};
+	}
+
+	public void getStudentByLastName(StudentDao dao, String someStudent) {
+		List<Student> students = dao.findByLastName(someStudent);
+		for (Student student: students ) {
+			System.out.println(student);
+		}
+
 	}
 
 	public void getAllStudents(StudentDao dao) {

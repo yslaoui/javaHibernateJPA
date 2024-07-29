@@ -28,8 +28,18 @@ public class StudentDaoImplementation implements StudentDao {
 
     @Override
     public List<Student> findAll() {
-        String jpql = "SELECT s FROM Student s";
+        String jpql = "SELECT s FROM Student s ORDER BY s.lastName";
         TypedQuery<Student> myQuery = entityManager.createQuery(jpql,Student.class);
         return myQuery.getResultList();
     }
+
+    @Override
+    public List<Student> findByLastName(String someLastName) {
+        String jpql = "SELECT s FROM Student s WHERE s.lastName=:lastNameParameter";
+        TypedQuery<Student> myQuery = entityManager.createQuery(jpql, Student.class);
+        myQuery.setParameter("lastNameParameter", someLastName);
+        return myQuery.getResultList();
+    }
 }
+
+
