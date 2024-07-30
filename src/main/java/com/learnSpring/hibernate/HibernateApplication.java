@@ -23,8 +23,13 @@ public class HibernateApplication {
 //			System.out.println("printing all students");
 //			getAllStudents(studentDao);
 //			getStudentByLastName(studentDao, "Macron");
-			changeLastName(studentDao, 1, "Merkel");
+//			changeLastName(studentDao, 1, "Putin");
+			deleteStudent(studentDao, 3);
 		};
+	}
+
+	public void deleteStudent(StudentDao dao, int id) {
+		dao.deleteById(id);
 	}
 
 	public void changeLastName(StudentDao dao, int id, String newName) {
