@@ -19,13 +19,13 @@ public class HibernateApplication {
 	@Bean
 	CommandLineRunner commandLineRunner(StudentDao studentDao) {
 		return runner -> {
-//			createMultipleStudents(studentDao);
+			createMultipleStudents(studentDao);
 //			System.out.println("printing all students");
 //			getAllStudents(studentDao);
 //			getStudentByLastName(studentDao, "Macron");
 //			changeLastName(studentDao, 1, "Putin");
 //			deleteStudent(studentDao, 3);
-			deleteAll(studentDao);
+//			deleteAll(studentDao);
 		};
 	}
 
@@ -77,11 +77,9 @@ public class HibernateApplication {
 		System.out.println("The three students were added");
 	}
 
-
-
-
-
 }
+
+
 
 
 
