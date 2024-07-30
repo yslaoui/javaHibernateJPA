@@ -24,8 +24,13 @@ public class HibernateApplication {
 //			getAllStudents(studentDao);
 //			getStudentByLastName(studentDao, "Macron");
 //			changeLastName(studentDao, 1, "Putin");
-			deleteStudent(studentDao, 3);
+//			deleteStudent(studentDao, 3);
+			deleteAll(studentDao);
 		};
+	}
+
+	public void deleteAll(StudentDao dao) {
+		dao.deleteAll();
 	}
 
 	public void deleteStudent(StudentDao dao, int id) {
