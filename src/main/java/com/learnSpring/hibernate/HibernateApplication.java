@@ -20,10 +20,15 @@ public class HibernateApplication {
 	CommandLineRunner commandLineRunner(StudentDao studentDao) {
 		return runner -> {
 //			createMultipleStudents(studentDao);
-			System.out.println("printing all students");
+//			System.out.println("printing all students");
 //			getAllStudents(studentDao);
-			getStudentByLastName(studentDao, "Macron");
+//			getStudentByLastName(studentDao, "Macron");
+			changeLastName(studentDao, 1, "Merkel");
 		};
+	}
+
+	public void changeLastName(StudentDao dao, int id, String newName) {
+		dao.update(id, newName);
 	}
 
 	public void getStudentByLastName(StudentDao dao, String someStudent) {
@@ -42,6 +47,7 @@ public class HibernateApplication {
 	}
 
 	public Student findAStudent(StudentDao dao, int id) {
+
 		return dao.findById(id);
 	}
 

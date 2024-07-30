@@ -40,6 +40,15 @@ public class StudentDaoImplementation implements StudentDao {
         myQuery.setParameter("lastNameParameter", someLastName);
         return myQuery.getResultList();
     }
+
+    @Override
+    @Transactional
+    public void update(int id, String newLastName) {
+        Student studentToUpdate = entityManager.find(Student.class, id);
+        studentToUpdate.setLastName(newLastName);
+        System.out.println("Student to update in the DAO is " + studentToUpdate);
+        entityManager.merge(studentToUpdate);
+    }
 }
 
 
